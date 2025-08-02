@@ -20,7 +20,7 @@ const PayHereSchema = z.object({
   address: z.string(),
   city: z.string(),
   country: z.string(),
-  hash: z.string().min(1, "Hash field cannot be empty"),
+  hash: z.string(),
 });
 
 type PayHereType = z.infer<typeof PayHereSchema>;
@@ -32,6 +32,7 @@ function Checkout() {
     register,
     handleSubmit,
     setValue,
+    setError,
     formState: { errors },
   } = useForm<PayHereType>({
     defaultValues: {
@@ -56,6 +57,10 @@ function Checkout() {
 
   const handlePayHereSubmit: SubmitHandler<PayHereType> = async () => {
     const result = await client.post("/payhere/checkout", { amount });
+    if (!result.data.hash) {
+      setError("hash", { type: "manual", message: "hash cannot be empty" });
+      return;
+    }
     setValue("hash", result.data.hash);
 
     formRef.current?.submit();
