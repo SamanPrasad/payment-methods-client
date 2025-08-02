@@ -61,22 +61,11 @@ function Checkout() {
       setError("hash", { type: "manual", message: "hash cannot be empty" });
       return;
     }
-    localStorage.setItem("hash", result.data.hash);
+
     setValue("hash", result.data.hash);
 
     formRef.current?.submit();
   };
-
-  // useEffect(() => {
-  //   client
-  //     .post("/payhere/checkout", { amount })
-  //     .then((res) => {
-  //       setValue("hash", res.data.hash);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
 
   return (
     <div>
