@@ -60,7 +60,7 @@ function Checkout() {
 
   useEffect(() => {
     client
-      .post("/payhere/checkout", { amount: "2000" })
+      .post("/payhere/checkout", { amount })
       .then((res) => {
         setValue("hash", res.data.hash);
       })
