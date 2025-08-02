@@ -36,9 +36,9 @@ function Checkout() {
   } = useForm<PayHereType>({
     defaultValues: {
       merchant_id: import.meta.env.VITE_MERCHANT_ID,
-      return_url: "http://sample.com/return",
-      cancel_url: "http://sample.com/cancel",
-      notify_url: "http://sample.com/notify",
+      return_url: import.meta.env.BASE_URL + "?status=return",
+      cancel_url: import.meta.env.BASE_URL + "?status=cancel",
+      notify_url: import.meta.env.VITE_NOTIFY_URL,
       order_id: "order12345",
       items: "Sample Item",
       currency: "LKR",
