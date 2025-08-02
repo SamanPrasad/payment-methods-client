@@ -54,7 +54,10 @@ function Checkout() {
     resolver: zodResolver(PayHereSchema),
   });
 
-  const handlePayHereSubmit: SubmitHandler<PayHereType> = () => {
+  const handlePayHereSubmit: SubmitHandler<PayHereType> = async () => {
+    const result = await client.post("/payhere/checkout", { amount });
+    setValue("hash", result.data.hash);
+
     formRef.current?.submit();
   };
 
