@@ -61,6 +61,7 @@ function Checkout() {
       setError("hash", { type: "manual", message: "hash cannot be empty" });
       return;
     }
+    console.log(result.data.hash);
     setValue("hash", result.data.hash);
 
     formRef.current?.submit();
