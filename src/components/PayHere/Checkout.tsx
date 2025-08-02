@@ -61,16 +61,16 @@ function Checkout() {
     formRef.current?.submit();
   };
 
-  useEffect(() => {
-    client
-      .post("/payhere/checkout", { amount })
-      .then((res) => {
-        setValue("hash", res.data.hash);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   client
+  //     .post("/payhere/checkout", { amount })
+  //     .then((res) => {
+  //       setValue("hash", res.data.hash);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
 
   return (
     <div>
