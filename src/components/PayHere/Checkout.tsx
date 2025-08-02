@@ -175,7 +175,7 @@ function Checkout() {
           )}
         </div>
         <div>
-          <input type="text" {...register("hash")} />
+          <input type="hidden" {...register("hash")} />
           {errors.hash && (
             <h4 style={{ color: "red" }}>{errors.hash.message}</h4>
           )}
